@@ -19,7 +19,7 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php")
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/sticky-footer.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/style_inscription.css">
+	<link rel="stylesheet" href="css/style.css">
 	
 	
 	<!-- Scripts JS -->

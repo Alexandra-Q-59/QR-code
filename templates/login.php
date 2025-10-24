@@ -12,7 +12,7 @@ $checked = valider("remember", "COOKIE") ? "checked" : "";
 ?>
 <?php 
 echo "<div class='form-card'>";
-mkForm("controleur.php");
+mkForm("controleur.php", "get", "form-connexion");
        echo "<h1 class='text-center'>Connexion</h1>";
        echo "Nom d'utilisateur";
         mkInput("text", "login", $login);

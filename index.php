@@ -26,7 +26,7 @@ Les formulaires de toutes les vues générées enverront leurs données vers la 
 	}*/
 
 	// S'il est vide, on charge la vue accueil par défaut
-	if (!$view) $view = "accueil"; 
+	if (!$view) $view = "login"; 
 
 	// NB : il faut que view soit défini avant d'appeler l'entête
 
@@ -55,7 +55,7 @@ Les formulaires de toutes les vues générées enverront leurs données vers la 
 
 	// Dans tous les cas, on affiche le pied de page
 	// Qui contient les coordonnées de la personne si elle est connectée
-	include("templates/footer.php");
+	//include("templates/footer.php");
 
 
 	

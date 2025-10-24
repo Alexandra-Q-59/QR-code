@@ -212,7 +212,7 @@ mkInput("text","pseudo","",array("id" => "inputPseudo",
 ou 
 mkInput("text","pseudo","",'id="inputPasse"'); 
 */
-function mkInput($type,$name,$value="",$misc=false)
+function mkInput($type,$name,$value="",$misc=false, $id="")
 {
 	$attrs = "";
 	$lblAfter = ""; 
@@ -237,7 +237,7 @@ function mkInput($type,$name,$value="",$misc=false)
 	
 	// Produit un champ formulaire
 	echo $lblBefore; 
-	echo "<input $attrs type=\"$type\" name=\"$name\" value=\"$value\"/>\n";
+	echo "<input $attrs type=\"$type\" name=\"$name\" value=\"$value\" id=\"$id\"/>\n";
 	echo $lblAfter; 
 }
 

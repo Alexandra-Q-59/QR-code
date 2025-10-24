@@ -1,0 +1,152 @@
+#form-connexion {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+select,
+input[type="password"],
+input[type="email"],
+input[type="submit"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+
+input[type="submit"] {
+  background-color: rgb(85, 141, 12);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(85, 141, 12);
+}
+
+.styled-button {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: rgb(85, 141, 12);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+#form-generer {
+  max-width: 100%;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.cacher_form2 input [type="number"] {
+  width: 10%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.styled-button {
+  background-color: rgb(85, 141, 12);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.groupe {
+    display: flex;
+    gap: 10px;
+    flex : 1;
+}
+
+.groupe1 {
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex : 1;
+  margin : auto;
+}
+
+.cacher input[type="submit"] {
+  display: none;
+}
+
+.cacher_form1 {
+  display: block;
+}
+
+.place_text {
+    flex: 1;                      /* chaque enfant peut prendre la même hauteur */
+    width: 80%;                    /* largeur relative ou fixe */
+    margin: 0;                     /* supprime auto si tu utilises flex:1 */
+    padding: 30px;
+    border-radius: 12px;
+    align-items: center;         /* centre verticalement */
+  text-align: center; 
+}
+
+#fond_im {
+    display: flex;
+    flex-direction: column;       /* empile les enfants verticalement */
+    gap: 20px;                    /* espace fixe entre les enfants */
+    flex: 1;                      /* optionnel : le conteneur prend tout l’espace */
+    align-items: center;
+    position: relative;  
+}
+
+#fond_im img{
+  z-index: 7;
+  position: absolute;
+  height: auto;
+  width: auto;
+  left: 0px;
+}

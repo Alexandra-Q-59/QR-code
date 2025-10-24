@@ -73,16 +73,23 @@ session_start();
 				$qs = array("view" => "login",
 				            "msg" => "Déconnexion réussie");
 			break;
-
+			case 'Suivant' : 
+				$titre = $_GET['titre'] ?? '';
+				$logo = valider("logo");
+				$URL_image = valider("URL_image");
+				$hauteur = valider("hauteur");
+				$largeur = valider("largeur");
+				if ($titre && $logo && $URL_image && $hauteur && ($hauteur>=300) && ($largeur>=500) && $largeur){
+				$qs = array("view" => "placement", "titre" => $titre, "logo" => $logo, "URL_image" => $URL_image, "hauteur" => $hauteur, "largeur" => $largeur);}
+				break;
 			///////////////////////////////////////////////////////////////////
             case 'Inscription':
 				$user = valider("user");
-				$email = valider("email");
 				$passe = valider("password");
 				$passe2 = valider("password2");
-				if ($user && $email && $passe && $passe2) {
+				if ($user && $passe && $passe2) {
 					if($passe == $passe2){
-					inscription($user, $email, $passe);
+					inscription($user, $passe);
 					$qs = array("view" => "login", "msg" => "Inscription réussie");}
 					else {$qs = array("view" => "inscription", "msg" => "Les mots de passe ne correspondent pas");}
 				} else {

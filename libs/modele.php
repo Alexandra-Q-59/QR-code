@@ -60,7 +60,7 @@ function isAdmin($idUser)
 }
 
 
-function inscription($user, $email, $passe){
+function inscription($user, $passe){
 	// Utilisation de requêtes préparées pour éviter les injections SQL
 	global $BDD_host;
 	global $BDD_base;
@@ -75,9 +75,9 @@ function inscription($user, $email, $passe){
 		$password_hash = password_hash($passe, PASSWORD_DEFAULT);
 		
 		// Requête préparée pour l'insertion
-		$sql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
+		$sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
 		$stmt = $dbh->prepare($sql);
-		$result = $stmt->execute([$user, $email, $password_hash]);
+		$result = $stmt->execute([$user, $password_hash]);
 		
 		if ($result) {
 			return $dbh->lastInsertId();
@@ -87,6 +87,22 @@ function inscription($user, $email, $passe){
 	} catch (PDOException $e) {
 		die("<font color=\"red\">inscription: Erreur de connexion : " . $e->getMessage() . "</font>");
 	}
+}
+
+function lister_qr($id){
+	$SQL = "SELECT QR FROM user
+	JOIN qr ON user.id_qr = qr.id
+	WHERE user.id = id";
+	return SQLSelect($SQL);
+}
+
+function generer_qr($id, $condition){
+	//$SQL = "INSERT INTO qr () "
+}
+
+function lister_image_cree($id_user){
+	$SQL = "SELECT titre, logo_url, image_url FROM Illustration WHERE Illustration.id_user = $id_user";
+	return SQLSelect($SQL);
 }
 
 ?>

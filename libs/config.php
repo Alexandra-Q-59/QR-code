@@ -16,9 +16,9 @@ $BDD_base="base";
 */
 
 // MACHINE LINUX 
-$BDD_host="localhost";
-$BDD_user="edegezel";
-$BDD_password="@ayuchiwa05"; // vide sous windows
-$BDD_base="CentralePopotteV4";
+$BDD_host = "localhost";
+$BDD_user = "Alexandra";
+$BDD_password = "Scarlet2Edmond!";
+$BDD_base = "QR_Code";
 
 ?>

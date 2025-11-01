@@ -6,18 +6,21 @@ if (basename($_SERVER["PHP_SELF"]) != "index.php") {
 }
 
 // Chargement éventuel des cookies
-$login = valider("login", "COOKIE");
-$passe = valider("passe", "COOKIE");
+$login = valider("nom", "COOKIE");
+$prenom = valider("prenom", "COOKIE");
+$passe = valider("motdepasse", "COOKIE");
 $checked = valider("remember", "COOKIE") ? "checked" : "";
 ?>
 <?php 
 echo "<div class='form-card'>";
 mkForm("controleur.php", "get", "form-connexion");
        echo "<h1 class='text-center'>Connexion</h1>";
-       echo "Nom d'utilisateur";
-        mkInput("text", "login", $login);
+       echo "Nom de famille";
+        mkInput("text", "nom", $login);
+        echo "Prénom";
+        mkInput("text", "prenom", $prenom);
         echo "Mot de passe";
-        mkInput("password", "passe", $passe) ;
+        mkInput("password", "motdepasse", $passe) ;
         echo "Se souvenir de moi  " ;
         mkInput("checkbox", "remember", "1", $checked);
         mkInput("submit", "action", "Connexion");

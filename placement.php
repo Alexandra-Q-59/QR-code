@@ -1,58 +1,49 @@
 <?php
-ob_start(); // commence à capturer TOUT ce qui serait affiché
+require_once("libs/maLibUtils.php");
+require_once("libs/qr_2i.php");
+$texte = valider("titre");
+$id = valider("id");
+$url_image = valider("URL_image");
+$logo_name = valider("logo");
+$hauteur = valider("hauteur");
+$largeur = valider("largeur");
+$largeur_qr = valider("largeur_qr");
+$pos_qr = valider("pos_qr");
+$color = valider("couleur");
+$pos_texte = valider("pos_titre");
+$taille_police = valider("police");
+if (!isset($_GET["debug"]))
+	header("Content-type: image/jpeg");
 
-// Ton code de génération d'image ici
-header('Content-Type: image/jpeg');
 
-// ... création de l'image ...
-$im = imagecreatetruecolor(120, 20);
-$text_color = imagecolorallocate($im, 233, 14, 91);
-imagestring($im, 1, 5, 5, "Un texte simple", $text_color);
-imagejpeg($im);
-imagedestroy($im);
 
-// FIN de la capture
-$garbage = ob_get_clean(); // récupère tout ce qui aurait été envoyé
 
-// Vérifie si du contenu parasite a été capturé
-if (!empty($garbage)) {
-    file_put_contents(__DIR__ . '/sortie_inattendue.log', $garbage);
-    die("⚠️ Une sortie parasite a été détectée. Voir le fichier sortie_inattendue.log");
-}
-//require_once("libs/qr_2i.php");
-//$texte      = valider("titre");
-//$url_image  = valider("URL_image");
-//$logo_name  = valider("logo");
-//$hauteur    = valider("hauteur");
-//$largeur    = valider("largeur");
-//$pos_qr = 1;
-//$color = '#0032d833';
-//$pos_texte = 1;
-//$taille_police = 14;
+$image = imagecreatefromjpeg("ressources/$url_image");
+$image = imagescale($image, $largeur, $hauteur);
 
-//$image = imagecreatefromjpeg("ressources/$url_image");
-//$image = imagescale($image, $largeur, $hauteur);
 
-/*
 if ($logo_name !== "Aucun_logo.png") {
     $logo = imagecreatefrompng("ressources/$logo_name");
     $logoWidth = imagesx($logo);
     $logoHeight = imagesy($logo);
-    $logoMaxWidth = $largeur * 0.2;
-    $logoMaxHeight = $hauteur * 0.2;
+    $logoMaxWidth = $largeur * 0.4;
+    $logoMaxHeight = $hauteur * 0.4;
+$scaleX = $logoMaxWidth / $logoWidth;
+$scaleY = $logoMaxHeight / $logoHeight;
+$scale = min($scaleX, $scaleY, 1); // ne jamais dépasser 1
+$newLogoWidth = intval($logoWidth * $scale);
+$newLogoHeight = intval($logoHeight * $scale);
 
-    $scale = min(intval($logoMaxWidth/$logoWidth), intval($logoMaxHeight/$logoHeight));
-    $newLogoWidth = $logoWidth * $scale;
-    $newLogoHeight = $logoHeight * $scale;
 
 
-   // imagecopyresampled($image, $logo, 10, 10, 0, 0, $newLogoWidth, $newLogoHeight, $logoWidth, $logoHeight);
+ imagecopyresampled($image, $logo, 10, 10, 0, 0, $newLogoWidth, $newLogoHeight, $logoWidth, $logoHeight);
 }
 
 
-$versionNumber = 1; 
+$versionNumber = 7; 
 $errorCorrectLevel = QR_ERROR_CORRECT_LEVEL_H; 
-$data = "HELLO !";
+$phrase = "http://localhost/QR-code/index.php?view=descriptif&id=" . $id;
+$data = $phrase;
 $maskPattern = QR_MASK_PATTERN000;
 
 $moduleCount = $versionNumber * 4 + 17;
@@ -67,10 +58,10 @@ setupTimingPatterns($modules);
 setupFormatPatterns($modules, $errorCorrectLevel, $maskPattern);
 setupVersionPatterns($modules,$versionNumber);
 
-$dataQR = createData($versionNumber, $errorCorrectLevel, $data) ; 
+$dataQR = createData($versionNumber, $errorCorrectLevel, $data); 
 mapData($modules, $dataQR, $maskPattern);
 
-$qrSize = 150; 
+$qrSize = $largeur_qr; 
 $qrImage = imagecreatetruecolor($qrSize, $qrSize);
 $white = imagecolorallocate($qrImage, 255,255,255);
 $black = imagecolorallocate($qrImage, 0,0,0);
@@ -95,7 +86,7 @@ switch($pos_qr){
 }
 
 
-//imagecopy($image, $qrImage, $qrX, $qrY, 0,0, $qrSize, $qrSize);
+imagecopy($image, $qrImage, $qrX, $qrY, 0,0, $qrSize, $qrSize);
 
 
 list($r,$g,$b) = sscanf($color, "#%02x%02x%02x");
@@ -111,9 +102,12 @@ switch($pos_texte){
 
 $fontFile = "ressources/ARIAL.TTF"; 
 imagettftext($image, $taille_police, 0, $textX, $textY, $textColor, $fontFile, $texte);
-*/
 
-//imagedestroy($image);
-//imagedestroy($qrImage);
-//if(isset($logo)) imagedestroy($logo);
+	imagejpeg($image);
+    //imagedestroy($im);
+    imagedestroy($image);
+
+    //imagedestroy($image);
+imagedestroy($qrImage);
+if(isset($logo)) imagedestroy($logo);
 ?>

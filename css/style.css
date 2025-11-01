@@ -150,3 +150,8 @@ input[type="number"] {
   width: auto;
   left: 0px;
 }
+
+tr > td,
+tr > th {
+  padding: 0.5em 1.5em ; /* espace intérieur horizontal et vertical */
+}

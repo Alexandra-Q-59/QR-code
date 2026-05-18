@@ -18,7 +18,7 @@ $BDD_base="base";
 // MACHINE LINUX 
 $BDD_host = "localhost";
 $BDD_user = "Alexandra";
-$BDD_password = "Scarlet2Edmond!";
+$BDD_password = ; //a remplacer
 $BDD_base = "QR_Code";
 
 ?>
